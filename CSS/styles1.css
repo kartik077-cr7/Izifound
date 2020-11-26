@@ -1,0 +1,257 @@
+div.Hobbies
+{
+ background-color: white;
+ opacity: 0.8;
+ color: blue;
+  box-shadow: 0 100px 100px rgba(0,0,0,.2);
+}
+
+.quoteone {
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: #eee;
+  padding: 2em;
+  border-radius: 1em;
+  font-size: 1.2em;
+  color: blue;
+}
+
+
+.quoteone figcaption,
+.quoteone blockquote {
+  margin: 1em;
+}
+
+.quote {
+  opacity: 0.8;
+  margin: 0;
+  background: #eee;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 1.2em;
+  color: blue;
+}
+
+
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+
+.quote{
+  width: 44%;
+  display: inline-block;
+  float: left;
+}
+.quote2
+{
+  position: relative;
+  left: 60px;
+}
+.quote2
+{
+  margin-left: 100px;
+  display: inline-block;
+  width: 44%;
+}
+.quote2 {
+  opacity: 0.8;
+  margin: 0;
+  background: #eee;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 1.2em;
+  color: blue;
+}
+
+
+.quote2 figcaption,
+.quote2 blockquote {
+  margin: 1em;
+}
+.photo-grid {
+  margin: 1em auto;
+  max-width: 1106px;
+  text-align: center;
+}
+
+
+.photo-grid li {
+  border: 5px solid white;
+  display: inline-block;
+  margin: 1em;
+  width: 289px;
+}
+
+
+.photo-grid img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+
+.photo-grid figure {
+  height: 163px;
+  overflow: hidden;
+  position: relative;
+  width: 289px;
+}
+
+
+.photo-grid figcaption {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  display: table;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+
+.photo-grid figcaption p {
+  display: table-cell;
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  width: 289px;
+  vertical-align: middle;
+}
+
+.photo-grid li:hover figcaption {
+  opacity: 1;
+}
+
+.photo-grid img {
+  display: block;
+  height: auto;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  max-width: 100%;
+}
+
+.photo-grid li:hover img {
+  -webkit-transform: scale(1.4);
+  -moz-transform: scale(1.4);
+  transform: scale(1.4);
+}
+
+.photo-grid figcaption p {
+  display: table-cell;
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  width: 289px;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  vertical-align: middle;
+}
+
+.photo-grid li:hover figcaption p {
+  -moz-transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px);
+}
+.photo-grid figcaption {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  display: table;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  -webkit-transition-delay: 100ms;
+  -moz-transition-delay: 100ms;
+  transition-delay: 100ms;
+  z-index: 100;
+}
+
+.box {
+  cursor: pointer;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  width: 400px;
+}
+
+.box img {
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+.box .overbox {
+  background-color: #304562;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  z-index: 100;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  opacity: 0;
+  width: 360px;
+  height: 240px;
+  padding: 130px 20px;
+}
+
+.box:hover .overbox { opacity: 1; }
+
+.box .overtext {
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+}
+
+.box .title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
+}
+
+.box:hover .title,
+.box:focus .title {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
+
+.box .tagline {
+  font-size: 0.8em;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.box:hover .tagline,
+.box:focus .tagline {
+  opacity: 1;
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+}
+
