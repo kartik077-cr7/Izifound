@@ -12,7 +12,7 @@
 	 $qry = 'SELECT * FROM product'; 
 	 $result = mysqli_query($link,$qry);
     echo '<h1 style="text-align:center;">The Products Details are - </h1>';
-    echo  '<table border="1" style="margin-left:auto;margin-right:auto;">
+    echo  '<table class = "styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 
 	<th> Product_ID </th> 
 	 <th> Product_Name</th>
@@ -30,3 +30,13 @@
 	}
 
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+</head>
+<body>
+
+</body>
+</html>

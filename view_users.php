@@ -15,7 +15,7 @@
 
     
 
-    echo  '<table border="1" style="margin-left:auto;margin-right:auto;">
+    echo  '<table class="styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 
 	<th> Name </th> 
 	<th> Email </th>
@@ -31,3 +31,14 @@
 	}
 
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+</head>
+<body>
+
+</body>
+</html>
+

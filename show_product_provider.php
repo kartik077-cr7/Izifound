@@ -21,10 +21,12 @@ if(!isset($_GET['product_id']))
 		$result3 = mysqli_query($link,$qry3);
 	$row3 = mysqli_fetch_assoc($result3);
     echo '<h1 style="text-align:center;">'.$row3["Product_name"].' Provider Details are - </h1>';
-    echo  '<table border="1" style="margin-left:auto;margin-right:auto;">
+    echo  '<table class="styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 
-	<th> Email </th> 
+	<th> Name </th> 
+	<th>College</th>
 	 <th> Product_Name</th>
+	 <th>Quantity</th>
 	 <th> Rent</th>
 	 <th> Buy</th>
 	 <th> Grab It</th>
@@ -37,10 +39,17 @@ if(!isset($_GET['product_id']))
 		$qry2 = "SELECT Product_name from product where product_id ='$product_id' ";
 		$result2 = mysqli_query($link,$qry2);
 	$row2 = mysqli_fetch_assoc($result2);
+       
+       $email = $row['email'];
+       $qry3 = "SELECT * from provider where EMAIL='$email'";
+       $result3 = mysqli_query($link,$qry3);
+       $row3 = mysqli_fetch_assoc($result3);
 
 	echo '<tr> 
-	<td>'.$row['email'].'</td>
+	<td>'.$row3['Name'].'</td>
+	<td>'.$row3['College'].'</td>
 	<td>'.$row2['Product_name'].'</td>
+	<td>'.$row['Quantity'].'</td>
 	<td>'.$row['RENT'].'</td>
 	<td>'.$row['Buy'].'</td>
 	<td><a href = "grab.php?email='.$row['email'].'&product='.$row2['Product_name'].'">'."GRAB".'</a></td> 
@@ -48,3 +57,13 @@ if(!isset($_GET['product_id']))
 	}
  
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+</head>
+<body>
+
+</body>
+</html>

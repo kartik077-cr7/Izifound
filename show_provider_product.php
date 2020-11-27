@@ -12,18 +12,21 @@ if(!isset($_GET['Email']))
 	{ 
 	  die('Failed to connect to server: ' . mysqli_error($link));
 	}
-	
-	$qry = "SELECT * FROM intermediate where email = '$email'"; 
-	$result = mysqli_query($link,$qry);
-    echo '<h1 style="text-align:center;">'.$email.'-Product Details are - </h1>';
-    echo  '<table border="1" style="margin-left:auto;margin-right:auto;">
+	 $qry3 = "SELECT * from provider where EMAIL='$email'";
+       $result3 = mysqli_query($link,$qry3);
+       $row3 = mysqli_fetch_assoc($result3);
 
-	<th> Email </th> 
+    echo '<h1 style="text-align:center;">'.$row3['Name'].'-Product Details are - </h1>';
+    echo  '<table class="styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 	 <th> Product_Name</th>
+	 <th>Quantity</th>
 	 <th> Rent</th>
 	 <th> Buy</th>
 	 <th>Grab It</th>
 	 ';
+
+	 $qry = "SELECT * FROM intermediate where email = '$email'"; 
+	$result = mysqli_query($link,$qry);
 	 
 	    while ($row = mysqli_fetch_assoc($result))
 	{ 
@@ -34,9 +37,8 @@ if(!isset($_GET['Email']))
 	$row2 = mysqli_fetch_assoc($result2);
 
 	echo '<tr> 
-
-	<td>'.$row['email'].'</td>
 	<td>'.$row2['Product_name'].'</td>
+	<td>'.$row['Quantity'].'</td>
 	<td>'.$row['RENT'].'</td>
 	<td>'.$row['Buy'].'</td>
 	<td><a href = "grab.php?email='.$row['email'].'&product='.$row2['Product_name'].'">'."GRAB".'</a></td> 
@@ -44,3 +46,13 @@ if(!isset($_GET['Email']))
 	}
  
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+</head>
+<body>
+
+</body>
+</html>
