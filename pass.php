@@ -73,7 +73,7 @@
                         unset($_SESSION['key']);
         	                  
                               $subject = "You Password";
-                              $message = "You Password is ".$password."\n"."Your email ".$email;
+                              $message = "You Password is: ".$password;
                               $email2 = "2019077@iiitdmj.ac.in";
                               $headers = "From: ".$email2;
                               $to = $email;
@@ -87,7 +87,7 @@
                                }
                                else
                                {
-                               	$_SESSION['error'] ="GADBAD ".$message.mysqli_error($link);
+                               	$_SESSION['error'] ="Something went wrong!!!.Try again later".
                           
                                	header("Location:index.php");
                                	return;
