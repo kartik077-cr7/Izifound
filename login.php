@@ -80,6 +80,12 @@ if(isset($_POST['Submit']))
   <meta charset="utf-8">
 	<title></title>
   <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
+    <style type="text/css">
+    a {
+    color: #0060B6;
+    text-decoration: none;
+}
+  </style>
 </head>
 <body style="background-image: url(Images/form3.jpg); 
 background-size: cover;">
@@ -133,9 +139,8 @@ background-size: cover;">
       <input type="submit" name="Submit" >
     </label>
   </div>
-</form>
-
-   	
-   </form>
 </body>
 </html>
+<?php
+echo("<p align ='center'><a href='pass.php?key=".'a'."'>Forgot Password?? </a></p><br><br>");
+?>

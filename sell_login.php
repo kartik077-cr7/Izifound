@@ -79,6 +79,12 @@ if(isset($_POST['Submit']))
   <meta charset="utf-8">
 	<title></title>
   <link rel="stylesheet" type="text/css" href="CSS/form_style.css">
+  <style type="text/css">
+    a {
+    color: #0060B6;
+    text-decoration: none;
+}
+  </style>
 </head>
 <body style="background-image: url(Images/form3.jpg); 
 background-size: cover;">
@@ -137,6 +143,9 @@ background-size: cover;">
 </body>
 </html>
 <?php
+echo("<p align ='center'><a href='pass.php?key=".'s'."'>Forgot Password?? </a></p><br><br>");
+
+
 echo("<p align ='center' style = 'color:black;'> NOT REGISTERED DON'T WORRY </p>");
 echo("<p align='center' style='color:red;'>" ."<a href = 'seller_request.php'>Click to register</a>". "</p>")
 ?>
