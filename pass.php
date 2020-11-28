@@ -2,7 +2,8 @@
  session_start();
  if(isset($_GET['key']) )
  	$_SESSION['key'] = $_GET['key'];
- elseif (!isset($_SESSION['key'])) {
+ elseif (!isset($_SESSION['key'])) 
+ {
  	header("Location:index.php");
  	return;
  }
@@ -26,81 +27,82 @@
            return;
         }
         else
-        {
-        	$link = mysqli_connect('localhost','root','',"izifound");
-			if(!$link)
-			{ 
-			die('Failed to connect to server: ' . mysqli_error($link));
-	        } 
+            {
+            	$link = mysqli_connect('localhost','root','',"izifound");
+    			if(!$link)
+    			{ 
+    			die('Failed to connect to server: ' . mysqli_error($link));
+    	        } 
 
-	        if($_SESSION['key'] == 'b')
-	        {
-                $qry = "SELECT * FROM uslogin where Email = '$email'";
-	        }
-	        elseif ($_SESSION['key'] == 's') 
-	        {
-                $qry = "SELECT * FROM prologin where Email = '$email'";
-	        }
-	        else
-	        {
-                $qry = "SELECT * FROM oplogin where Email = '$email'";
-	        }
+    	        if($_SESSION['key'] == 'b')
+    	        {
+                    $qry = "SELECT * FROM uslogin where Email = '$email'";
+    	        }
+    	        elseif ($_SESSION['key'] == 's') 
+    	        {
+                    $qry = "SELECT * FROM prologin where Email = '$email'";
+    	        }
+    	        else
+    	        {
+                    $qry = "SELECT * FROM oplogin where Email = '$email'";
+    	        }
 
-	        $result = mysqli_query($link,$qry);
-	        if(mysqli_num_rows($result)==0)
-	        {
-	     	 $_SESSION['error'] = "Your Email isn't registered";
-	    	 header("Location:pass.php");
-	    	 return;
-	        } 
-	        else
-	        {
-	        	$row = mysqli_fetch_assoc($result);
+    	        $result = mysqli_query($link,$qry);
+    	        if(mysqli_num_rows($result)==0)
+    	        {
+    	     	 $_SESSION['error'] = "Your Email isn't registered";
+    	    	 header("Location:pass.php");
+    	    	 return;
+    	        } 
+    	        else
+    	        {
+      	        	$row = mysqli_fetch_assoc($result);
 
-	        	if($row['Username'] == $name)
-	        	{     
-	        		if($_SESSION['key']=='b')
-	        			$password = $row['PASSWORD'];
-	        		elseif ($_SESSION['key'] == 's') 
-	        		{
-	        		 $password = $row['Password'];	
-	        		}
-	        		else
-	        		{
-	        			$password = $row['PASSWORD'];
-	        		}
-	                  
-                      $subject = "You Password";
-                      $message = "You Password is ".$password."";
-                      $headers = "From : "."izifound community";
-                      $to = $email;
-                      if(mail($to,$subject,$message,$headers))
-                       {
-                       	 $_SESSION['success'] = "You will shortly receive your password";
-                       	 unset($_SESSION['key']);
-                       	 header("Location:index.php");
-                       	 return;
-                       }
-                       else
-                       {
-                       	$_SESSION['error'] = "Something went wrong.Try Later";
-                       	unset($_SESSION['key']);
-                       	header("Location:index.php");
-                       	return;
-                       }
+      	        	if($row['Username'] == $name)
+      	        	{     
+        	        		if($_SESSION['key']=='b')
+        	        			$password = $row['PASSWORD'];
+        	        		elseif ($_SESSION['key'] == 's') 
+        	        		{
+        	        		 $password = $row['Password'];	
+        	        		}
+        	        		else
+        	        		{
+        	        			$password = $row['PASSWORD'];
+        	        		}
+                        unset($_SESSION['key']);
+        	                  
+                              $subject = "You Password";
+                              $message = "You Password is ".$password."\n"."Your email ".$email;
+                              $email2 = "2019077@iiitdmj.ac.in";
+                              $headers = "From: ".$email2;
+                              $to = $email;
+                             
+                              if(mail($to,$subject,$message,$headers))
+                               {
+                               	 $_SESSION['success'] = "You will shortly receive your password";
+                              
+                               	 header("Location:index.php");
+                               	 return;
+                               }
+                               else
+                               {
+                               	$_SESSION['error'] ="GADBAD ".$message.mysqli_error($link);
+                          
+                               	header("Location:index.php");
+                               	return;
+                               }
 
-	        	}
-	        	else
-	        	{
-	        		$_SESSION['error'] = "Username isn't correct";
-	        		header("Location:pass.php");
-	        		return;
-	        	}
-	        }
-
-
-
-     }
+      	        	}
+      	        	else
+      	        	{
+      	        		$_SESSION['error'] = "Username isn't correct";
+      	        		header("Location:pass.php");
+      	        		return;
+      	        	}
+    	        
+    	        }
+         }
     }
 
 ?>
