@@ -89,8 +89,19 @@ if(isset($_POST['submit']))
 		   	return;
 		   }
 
-		   header("Location: sure2.php?Id=".$id);
+		   $qry = "SELECT * FROM intermediate where product_id=$id";
+		   $results = mysqli_query($link,$qry);
+		   if(mysqli_num_rows($results)==0)
+		   {
+		   	  header("Location: sure2.php?Id=".$id);
               return;
+		   }
+		   else
+		   {
+		   	$_SESSION['error'] = "YOU CAN'T DELETE THIS PRODUCT";
+		   	header("Location:update_product.php");
+		   	return;
+		   }
 
 
 	   }

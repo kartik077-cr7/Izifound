@@ -62,6 +62,9 @@ Pending_Requests
 History
 </button></td>
 </tr>
+<tr>
+ <td align="center"><button onclick="document.location='sell_history.php'">Sell history</td>
+</tr>
 
 </table></center>
 </html>

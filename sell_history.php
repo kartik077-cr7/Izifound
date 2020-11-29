@@ -1,25 +1,26 @@
-<?php
-session_start();
-
-  if(!isset($_SESSION['email']))
+<?php 
+ 
+  session_start();
+  if(!isset($_SESSION['college_seller']))
   {
-  	header("Location:index.php");
+  	header("Location:main.php");
   	return;
   }
-  
-  $link = mysqli_connect('localhost','root','','izifound');
 
-	 if(!$link)
-	 {
-	    die('Failed to connect to server: ' . mysqli_error($link)); 
-	 }
+  $link = mysqli_connect('localhost','root','',"izifound");  
+
+	/*Check link to the mysql server*/ 
+	if(!$link)
+	{ 
+	   die('Failed to connect to server: ' . mysqli_error($link));
+	}
     
     $email = $_SESSION['email'];
-
-    $qry = "SELECT * FROM history WHERE Email ='$email'";
+    $qry = "SELECT * FROM history where From_Email='$email'";
     $result = mysqli_query($link,$qry);
-  
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,14 +42,14 @@ session_start();
 
          echo  '<table cellspacing="0" cellpading="0" class="styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 
-        <th> Buyed_From </th> 
+        <th> Sold_To </th> 
          <th> Product_Name</th>
          <th> His College</th>
          ';
 	           while ($row = mysqli_fetch_assoc($result)) 
             {
-                $email = $row['From_Email'];
-                $qry = "SELECT * FROM provider where EMAIL = '$email'";
+                $email = $row['Email'];
+                $qry = "SELECT * FROM users where Email = '$email'";
                  $result2 = mysqli_query($link,$qry);
                  
                  $row2 = mysqli_fetch_assoc($result2);
@@ -56,7 +57,7 @@ session_start();
                 echo '<tr> 
                 <td>'.$row2['Name'].'</td>
                 <td>'.$row['product_name'].'</td>
-                <td>'.$row2['College'].'</td>
+                <td>'.$row['College'].'</td>
                 </tr>'; 
             }
 	     }
