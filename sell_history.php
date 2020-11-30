@@ -38,13 +38,13 @@
        else
        {
 
-        echo '<h1 style="text-align:center;">You Buyed Following - </h1>';
+        echo '<h1 style="text-align:center;">You Sold Following - </h1>';
 
          echo  '<table cellspacing="0" cellpading="0" class="styled-table" border="1" style="margin-left:auto;margin-right:auto;">
 
         <th> Sold_To </th> 
          <th> Product_Name</th>
-         <th> His College</th>
+         <th> His/Her College</th>
          ';
 	           while ($row = mysqli_fetch_assoc($result)) 
             {

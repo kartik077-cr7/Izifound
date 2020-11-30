@@ -15,11 +15,13 @@
  {
     die('Failed to connect to server: ' . mysqli_error($link)); 
  }
+ 
  $email = $_SESSION['email'];
  $qry = "SELECT * FROM pendin_buyes where From_Email = '$email'";
  $result = mysqli_query($link,$qry);
 
  $positions = array();                    
+    
     while($row = mysqli_fetch_assoc($result))
      {                      
            $positions[] = $row;
@@ -41,9 +43,7 @@
      }
      $email = $_SESSION['email'];
 
-     $qry = "DELETE from pendin_buyes where From_Email = '$email'";
-     $result = mysqli_query($link,$qry);
-
+     
      $rank = 1;
 
      for($i=0;$i<9;$i++)
@@ -56,20 +56,47 @@
         $product = $_POST['product'.$i];
         $to = $_SESSION['email'];
         $status = $_POST['status'.$i];
+        $quantity = $_POST['quantity'.$i];
+        $email = $_SESSION['email'];
 
-         
        if($status == "Yes")
        {
-        $college = $_SESSION['college_seller'];
-        $qry = "INSERT INTO history(Email,product_name,From_Email,College)
-                 VALUES('$requestor','$product','$to','$college')";
-        $result = mysqli_query($link,$qry);
-       }
-       else
-       {
-        $qry = "INSERT INTO pendin_buyes(From_Email,To_Email,College,Product_Name) VALUES('$to','$requestor','$college','$product')";
-        $result = mysqli_query($link,$qry);
-      }
+               
+             $qry = "SELECT * FROM product WHERE Product_name = '$product'";
+             $result = mysqli_query($link,$qry);
+             $row = mysqli_fetch_assoc($result);
+              
+              $id = $row['product_id'];
+           
+            $qry = "SELECT * FROM intermediate where email = '$email' AND product_id = $id";
+            $result = mysqli_query($link,$qry);
+            $row = mysqli_fetch_assoc($result);
+            $left = $row['Quantity'];
+            
+            if($left < $quantity)
+            {
+              $_SESSION['error'] = "Not possible to sell more than existing.Process Blocked!!!"."Left only left amount is ".$left." id is".$id."product name ".$product;
+              header("Location:provider_log.php");
+              return;
+            }
+            else
+            {
+         
+              $qry = "DELETE from pendin_buyes where From_Email = '$email' AND To_Email='$requestor' AND product_name = '$product'";
+              $result = mysqli_query($link,$qry);
+              
+             
+
+              $college = $_SESSION['college_seller'];
+              $qry = "INSERT INTO history(Email,product_name,From_Email,College,Quantity)
+                     VALUES('$requestor','$product','$to','$college',$quantity)";
+            $result = mysqli_query($link,$qry);
+
+            $reval = $left-$quantity;
+            $qry = "UPDATE intermediate SET Quantity=$reval where email='$email' AND product_id=$id";
+            $result = mysqli_query($link,$qry);
+             }
+         }
      }
 
      $_SESSION['success'] = "Changes saved";
@@ -111,7 +138,14 @@ body
 </style>
 </head>
 <body>
-	<?php
+	<?php 
+
+        if(isset($_SESSION['error']))
+        {
+          echo "<p align='center' style='color:red;'>" . $_SESSION['error'] . "</p>";
+          unset($_SESSION['error']);
+        }
+
      
       	  if(count($positions) == 0)
       	  {
@@ -139,6 +173,8 @@ body
 	        	echo('value = "'.$position['College'].'"/>');
                 echo('<p>Product:<input type="text" readonly="readonly" name="product'.$pos.'"');
 	        	echo('value = "'.$position['Product_Name'].'"/></p>');
+            echo('<p>Quantity:<input type="number" required="required" name="quantity'.$pos.'"');
+            echo('value = " "/>');
             echo('<p>Status: <select name="status'.$pos.'"');
             echo('value = ""/>');
             echo('<option value="Yes">Successfull</option>');
