@@ -31,7 +31,7 @@
 	echo '<tr> 
 	<td>'.$row['Name'].'</td>
 	<td>'.$row['College'].'</td>
-	<td>'.$row['RATING'].'</td> 
+	<td>'.number_format((float) $row['RATING'], 1, '.', '').'</td> 
     <td><a href = "show_provider_product.php?Email='.$row['EMAIL'].'">'."Click Me".'</a></td> 
 	</tr>'; 
 	}

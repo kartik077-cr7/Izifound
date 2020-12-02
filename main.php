@@ -64,6 +64,7 @@ History
 </tr>
 <tr>
  <td align="center"><button onclick="document.location='sell_history.php'">Sell history</td>
+ 	 <td align="center"><button onclick="document.location='feedback.php'">Feedback Form</td>
 </tr>
 
 </table></center>

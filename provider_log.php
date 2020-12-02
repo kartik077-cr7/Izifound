@@ -58,7 +58,9 @@
         $status = $_POST['status'.$i];
         $quantity = $_POST['quantity'.$i];
         $email = $_SESSION['email'];
-
+         
+         if($quantity <0)
+           continue;
        if($status == "Yes")
        {
                
@@ -75,26 +77,35 @@
             
             if($left < $quantity)
             {
-              $_SESSION['error'] = "Not possible to sell more than existing.Process Blocked!!!"."Left only left amount is ".$left." id is".$id."product name ".$product;
+              $_SESSION['error'] = "Not possible to sell more than existing.Process Blocked!!!"."Only ".$left."peices are left id of ".$product;
               header("Location:provider_log.php");
               return;
             }
             else
             {
-         
-              $qry = "DELETE from pendin_buyes where From_Email = '$email' AND To_Email='$requestor' AND product_name = '$product'";
+              $college = $_SESSION['college_seller'];
+              $qry = "INSERT INTO history(Email,product_name,From_Email,College,Quantity,rated) VALUES('$requestor','$product','$to','$college',$quantity,0)";
+
+            $result = mysqli_query($link,$qry);
+            if($result==False)
+            {
+               $_SESSION['error'] = mysqli_error($link).$requestor;
+              header("Location:provider_log.php");
+              return;
+            }
+
+             $qry = "DELETE from pendin_buyes where From_Email = '$email' AND To_Email='$requestor' AND product_name = '$product'";
               $result = mysqli_query($link,$qry);
               
-             
-
-              $college = $_SESSION['college_seller'];
-              $qry = "INSERT INTO history(Email,product_name,From_Email,College,Quantity)
-                     VALUES('$requestor','$product','$to','$college',$quantity)";
-            $result = mysqli_query($link,$qry);
 
             $reval = $left-$quantity;
             $qry = "UPDATE intermediate SET Quantity=$reval where email='$email' AND product_id=$id";
             $result = mysqli_query($link,$qry);
+
+            $qry = "INSERT INTO feedback(From_Email,To_Email,Product)
+                    VALUES('$email','$requestor','$product')";
+           $result = mysqli_query($link,$qry);
+
              }
          }
      }
