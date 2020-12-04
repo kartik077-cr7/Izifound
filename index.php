@@ -32,7 +32,7 @@ image-rendering: pixelated;
   background-repeat: no-repeat;
   background-size: cover;
  color: black;">
-      <img src="Images/logo.png" style="margin-left: 45%;" alt="IZIFOUND">
+      <img src="Images/logo3.png" style="margin-left: 45%;" alt="IZIFOUND">
      <div class="quoteone">
         <h2 align="center" style="color: grey;">DESCRIPTION</h2>
         <p>
@@ -51,7 +51,7 @@ image-rendering: pixelated;
       <li>
         <a href="buy_login.php">
           <figure>
-            <img src="Images/sales.jpg" height="180" width="320" alt="Sales">
+            <img src="Images/sales2.jpg" height="180" width="320" alt="Sales">
             <figcaption><p>BUY</p></figcaption>
           </figure>
         </a>

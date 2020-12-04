@@ -30,7 +30,7 @@
 
   if(isset($_POST['cancel']))
   {
-    header("Location:main.php");
+    header("Location:sell_main.php");
     return;
   }
   if(isset($_POST['edit']))

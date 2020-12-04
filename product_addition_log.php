@@ -27,7 +27,7 @@ session_start();
 
     if(isset($_POST['cancel']))
     {
-    	header("Location:main.php");
+    	header("Location:admin_main.php");
     	return;
     }
     if(isset($_POST['edit']))

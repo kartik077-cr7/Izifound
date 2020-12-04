@@ -58,7 +58,7 @@ if(isset($_POST['Submit']))
         		$_SESSION['success'] = "Logged In";
         		$_SESSION['college_user'] = $college;
             $_SESSION['email'] = $email;
-        		header("Location:main.php");
+        		header("Location:buy_main.php");
         		return;
         	}
         	else

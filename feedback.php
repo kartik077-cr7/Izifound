@@ -27,7 +27,7 @@
 
 	     if(isset($_POST['cancel']))
 	  {
-	    header("Location:main.php");
+	    header("Location:buy_main.php");
 	    return;
 	  }
 	  if(isset($_POST['edit']))
