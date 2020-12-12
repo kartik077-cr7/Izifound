@@ -1,5 +1,5 @@
 <?php
-require "navbar.php";
+
       session_start();
       //include('class.phpmailer.php');
 
@@ -46,13 +46,13 @@ if(isset($_POST['Submit']))
          $qry = "INSERT INTO pending_product(Email,Product_Name,College) VALUES('$email','$product','$college')";
           $result = mysqli_query($link,$qry);
          $_SESSION['success'] = "Message sent successfully operator will shortly include new product Thank you"." ".$name." for for actively being part of our small family" ;
-         header("Location:main.php");
+         header("Location:sell_main.php");
          return;
        }
        else
        {
         $_SESSION['error'] = "Something went wrong ! try later";
-         header("Location:main.php");
+         header("Location:sell_main.php");
          return;
        }
   

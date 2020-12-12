@@ -53,7 +53,7 @@ session_start();
 
         }
            $_SESSION['success'] = "Changes saved";
-        header("Location:main.php");
+        header("Location:admin_main.php");
         return;
 
         

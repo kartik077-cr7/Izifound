@@ -168,7 +168,7 @@
 
             $pos++;
             echo('<div id="position'.$pos.'">');
-            echo('<p>Product:<input type="text" class="products_hover" name="product_name'.$pos.'"');
+            echo('<p>Product:<input type="text" readonly="readonly" class="products_hover" name="product_name'.$pos.'"');
 
             echo('value = "'.$row['Product_name'].'"/>');
             echo('<input type = "button" value ="-" ');

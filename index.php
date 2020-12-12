@@ -119,7 +119,7 @@ image-rendering: pixelated;
       </li>
       <li>
           <figure>
-            <img src="http://mrg.bz/zfBQ7S" height="180" width="320" alt="Adarsh">
+            <img src="Images/Adarsh.jpeg" height="180" width="320" alt="Adarsh">
             <figcaption><p>ADARSH</p></figcaption>
           </figure>
       </li>
