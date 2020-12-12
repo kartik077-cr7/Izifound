@@ -54,11 +54,32 @@
                  
                  $row2 = mysqli_fetch_assoc($result2);
 
+                 if($row2 == False)
+                 {
+                   $qry = "SELECT * FROM provider where Email = '$email'";
+                 $result2 = mysqli_query($link,$qry);
+                 
+                 $row2 = mysqli_fetch_assoc($result2);
+                 }
+                 if($row2==False)
+                 {
+                  $qry = "SELECT * FROM operator where Email = '$email'";
+                 $result2 = mysqli_query($link,$qry);
+                 
+                 $row2 = mysqli_fetch_assoc($result2);
+                 echo '<tr> 
+                <td>'.$row2['NAME'].'</td>
+                <td>'.$row['product_name'].'</td>
+                <td>'.$row2['College'].'</td>
+                </tr>'; 
+                 }
+              else{
                 echo '<tr> 
                 <td>'.$row2['Name'].'</td>
                 <td>'.$row['product_name'].'</td>
-                <td>'.$row['College'].'</td>
-                </tr>'; 
+                <td>'.$row2['College'].'</td>
+                </tr>';
+                } 
             }
 	     }
 	    ?>

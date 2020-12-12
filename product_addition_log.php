@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 	if(!isset($_SESSION['admin_college']))
 	{
 		$_SESSION['error'] = "Unauthorised to access";

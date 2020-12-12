@@ -387,6 +387,7 @@ header {
 			<li><a href="pending_request.php">Member Request</a></li>
 			<li><a href="product_addition_log.php">Product Addition Request</a></li>
 			<li><a href="history.php">History</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
 			<li><a href="logout.php">Logout</a></li>
 			<li class="social">
 				<a href="#"><img src="icons/social/twitter.svg" alt=""></a>

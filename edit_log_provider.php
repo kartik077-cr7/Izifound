@@ -1,4 +1,5 @@
 <?php    
+
     session_start();
 	 if(!isset($_SESSION['college_seller']))
 	{
@@ -6,16 +7,15 @@
 		header("Location:main.php");
 		return;
 	}
-
 	if(isset($_POST['cancel']))
 	{
-		header("Location:main.php");
+		header("Location:sell_main.php");
 		return;
 	}
 	if(isset($_POST['edit']))
 	{ 
 
-          $link = mysqli_connect('localhost','root','','Izifound'); 
+         $link = mysqli_connect('localhost','root','','Izifound'); 
 
             if(!$link)
             { 
@@ -26,8 +26,8 @@
            $email = $_SESSION['email'];
            $qry = "DELETE from intermediate WHERE email = '$email'";
            $result = mysqli_query($link,$qry);
-
            $rank = 1;
+           
            for($i = 1 ; $i<=9;$i++)
            {
  
@@ -40,22 +40,46 @@
                 $rent = $_POST['rent'.$i];
                 $buy = $_POST['buy'.$i];
                 $quantity = $_POST['quantity'.$i];
-
+                if($quantity<=0)
+                  continue;
+                $image = $_POST['image'.$i];
                 $qry ="SELECT product_id from product where Product_name = '$name'";
                  $result = mysqli_query($link,$qry);
+                 
+                 if(mysqli_num_rows($result)==0)
+                    continue;
+
                  $row = mysqli_fetch_assoc($result);
 
                  $id = $row['product_id'];
 
-                
-                $qry = "INSERT INTO intermediate(email,product_id,RENT,Buy,Quantity) VALUES ('$email',$id,'$rent','$buy','$quantity')";
+                if(isset($_FILES['image'.$i]))
+                {
+                   $allowed=array('jpg','jpeg','png');
+                    $fl_name = $_FILES['image'.$i]['name'];
+                    $tmp = explode('.',$fl_name);
+                    $fl_extn = strtolower(end($tmp));
+                    $fl_temp = $_FILES['image'.$i]['tmp_name'];
+
+                    if(in_array($fl_extn,$allowed))
+                    {
+                        $image = 'Images/'.substr(md5(time()),0,10).'.'.$fl_extn;
+                        move_uploaded_file($fl_temp,$image);
+                    }
+                    else
+                    {
+                      continue;
+                    }
+                }
+
+                $qry = "INSERT INTO intermediate(email,product_id,RENT,Buy,Quantity,image) VALUES ('$email',$id,'$rent','$buy','$quantity','$image')";
                 $row = mysqli_query($link,$qry);
                 
 
            }
 
            $_SESSION['success'] = "Updated";
-                header("Location:main.php");
+                header("Location:sell_main.php");
                 return;
  
 	}
@@ -70,13 +94,7 @@
     $email = $_SESSION['email'];                             
     $qry = "SELECT * FROM intermediate where email = '$email'"; 
      $result = mysqli_query($link,$qry);
-                                      
-     // if(mysqli_num_rows($result) == 0)
-     // {                            
-     // 	$_SESSION['message'] = "YOU AREN'T SELLING ANYTHING".$email;
-     // 	header("Location:edit_log_provider.php");
-     // 	return; 
-     // }
+                            
                                                                 
      echo '<h1 style="text-align:center;"> Details are - </h1>';
                            
@@ -134,7 +152,7 @@
         	unset($_SESSION['message']);
           }
 ?> 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     	<?php
     	$pos = 0;
    echo('<p id = "Product">Products: <input type="submit" id = "addPos" value="+"><br>');
@@ -150,7 +168,7 @@
 
             $pos++;
             echo('<div id="position'.$pos.'">');
-            echo('<p>Product:     <input type="text" class="products_hover" name="product_name'.$pos.'"');
+            echo('<p>Product:<input type="text" class="products_hover" name="product_name'.$pos.'"');
 
             echo('value = "'.$row['Product_name'].'"/>');
             echo('<input type = "button" value ="-" ');
@@ -164,7 +182,9 @@
             echo('value = "'.$position['Buy'].'"/>');
             echo('<option value="Yes">Yes</option>');
             echo('<option value="No">No</option></select></p>');
-            echo('<p>Quantity: <input type = "number" name= "quantity'.$pos.'"');
+            echo('<p>Image: <input type = "text" readonly="readonly" name= "image'.$pos.'"');
+            echo('value = "'.$position['image'].'"/>');
+            echo('<p>Quantity: <input type = "number" required="required" name= "quantity'.$pos.'"');
             echo('value = "'.$position['Quantity'].'"/>');
             echo("</p></div>");
             echo("<hr>");
@@ -188,12 +208,13 @@
 			$('#position_fields').append(
 
 			'<div id="position'+countPos+'">\
-			<p>Product: <input class="products_hover" type="text" name="product_name'+countPos+'" value="" /> \
+			<p>Product: <input class="products_hover" required="required" type="text" name="product_name'+countPos+'" value="" /> \
 			 <input type="button" value="-"\
 			onclick="$(\'#position'+countPos+'\'). remove(); return false;"></p>\
 			<p>Rent: <select name="rent'+countPos+'" value="" ><option value="Yes">Yes</option><option value="No">No</option></select> \
 			<p>Buy: <select name="buy'+countPos+'" value="" ><option value="Yes">Yes</option><option value="No">No</option></select> \
-			<p>Quantity: <input type="number" name="quantity'+countPos+'" value="" />  </div><hr>');
+            <p>Image: <input type="file" name="image'+countPos+'" value="" />\
+			<p>Quantity: <input type="number" required="required" name="quantity'+countPos+'" value="" />  </div><hr>');
             $(".products_hover").autocomplete({
                 source:"pro.php"
             });

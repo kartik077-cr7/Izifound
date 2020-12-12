@@ -1,9 +1,19 @@
 <?php
  session_start();
 
+   if(isset($_SESSION['college_user']))
+   {
+    $index = 0;
+   }
+   else if(isset($_SESSION['college_seller']))
+   {
+    $index = 1;
+   }
+   else
+    $index = 2;
 	 if(!isset($_SESSION['email']))
 	 {
-	 	header("Location:main.php");
+	 	header("Location:index.php");
 	 	return;
 	 }
 	 $link = mysqli_connect('localhost','root','','Izifound');
@@ -27,12 +37,22 @@
 
 	     if(isset($_POST['cancel']))
 	  {
+      if($index == 0){
 	    header("Location:buy_main.php");
 	    return;
+       }
+       if($index == 1){
+      header("Location:sell_main.php");
+      return;
+       }
+       if($index == 2){
+      header("Location:admin_main.php");
+      return;
+       }
 	  }
 	  if(isset($_POST['edit']))
 	  {
-             $link = mysqli_connect('localhost','root','','izifound');
+          $link = mysqli_connect('localhost','root','','izifound');
      
 		     if(!$link)
 		     {
@@ -80,7 +100,18 @@
                        $result = mysqli_query($link,$qry);
 
                        $_SESSION['success'] = "Successfully rated";
-                       header("Location:main.php");
+                      if($index == 0){
+                              header("Location:buy_main.php");
+                              return;
+                               }
+                               if($index == 1){
+                              header("Location:sell_main.php");
+                              return;
+                               }
+                               if($index == 2){
+                              header("Location:admin_main.php");
+                              return;
+                               }
 
                 	}
                 	else

@@ -14,6 +14,9 @@ if(!isset($_GET['product_id']))
 	{ 
 	  die('Failed to connect to server: ' . mysqli_error($link));
 	}
+	    $qry = "DELETE * FROM intermediate where Quantity=0";
+    $result = mysqli_query($link,$qry);
+
 	 $qry = "SELECT * FROM intermediate where product_id = '$product_id'"; 
 	 $result = mysqli_query($link,$qry);
 
@@ -29,6 +32,7 @@ if(!isset($_GET['product_id']))
 	 <th>Quantity</th>
 	 <th> Rent</th>
 	 <th> Buy</th>
+	 <th>Image</th>
 	 <th> Grab It</th>
 	 ';
 	 
@@ -44,16 +48,25 @@ if(!isset($_GET['product_id']))
        $qry3 = "SELECT * from provider where EMAIL='$email'";
        $result3 = mysqli_query($link,$qry3);
        $row3 = mysqli_fetch_assoc($result3);
+	echo "<tr><td>";
+	echo $row3['Name'];
+	echo "</td><td>";
+	echo $row3['College'];
+	echo "</td><td>";
+	echo $row2['Product_name'];
+	echo "</td><td>";
+	echo $row['Quantity'];
+	echo "</td><td>";
+	echo $row['RENT'];
+	echo "</td><td>";
+	echo $row['Buy'];
+	echo "</td><td>";
+	?>  <div class="zoom"> <img width="200" height="200" src="<?php echo $row['image'] ?>" alt="No image">
+		</div><?php
+	echo "</td><td>";
+	echo '<a href = "grab.php?email='.$row['email'].'&product='.$row2['Product_name'].'">'."GRAB".'</a>';
+	echo "</td></tr>";
 
-	echo '<tr> 
-	<td>'.$row3['Name'].'</td>
-	<td>'.$row3['College'].'</td>
-	<td>'.$row2['Product_name'].'</td>
-	<td>'.$row['Quantity'].'</td>
-	<td>'.$row['RENT'].'</td>
-	<td>'.$row['Buy'].'</td>
-	<td><a href = "grab.php?email='.$row['email'].'&product='.$row2['Product_name'].'">'."GRAB".'</a></td> 
-	</tr>'; 
 	}
  
 ?>
@@ -62,8 +75,22 @@ if(!isset($_GET['product_id']))
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+		<style type="text/css">
+		.zoom
+		{
+			  transition: transform .2s;
+			  width: 200px;
+			  height: 200px;
+			  margin: 0 auto;
+		}
+		.zoom:hover {
+	  -ms-transform: scale(2.5);
+	  -webkit-transform: scale(2.5); 
+	  transform: scale(2.5); 
+      }
+	</style>
 </head>
 <body>
 
 </body>
-</html>
+</html

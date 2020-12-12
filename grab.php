@@ -7,13 +7,22 @@
       }
 
       if(isset($_SESSION['college_user']))
+      {
+        $index=0;
         $college = $_SESSION['college_user'];
+      }
 
       if(isset($_SESSION['admin_college']))
+      {
         $college = $_SESSION['admin_college'];
+        $index=1;
+      }
 
       if(isset($_SESSION['college_seller']))
+      {
         $college = $_SESSION['college_seller'];
+        $index=2;
+      }
 
       if(isset($_POST['Submit']))
       {
@@ -48,18 +57,44 @@
                  $result = mysqli_query($link,$qry);
 
             $_SESSION['success'] = "Message sent successfully provider will update you Thank you ".$_POST['Name'];
-            header("Location:main.php");
-            return;
-            }
-           else
+              if($index==0)
+              {
+               header("Location:buy_main.php");
+               return;
+              }
+             else if($index==1)
+             {
+               header("Location:admin_main.php");
+               return;
+             }
+             else
+             {
+               header("Location:sell_main.php");
+               return;
+             }
+         }
+        else
            {
-            $_SESSION['error'] = "Something went wrong ! try later".$message."To ".$_POST['To'];
-             header("Location:main.php");
-             return;
-           }
+              $_SESSION['error'] = "Something went wrong ! try later".$message."To ".$_POST['To'];
 
-      }
+              if($index==0)
+              {
+               header("Location:buy_main.php");
+               return;
+              }
+             else if($index==1)
+             {
+               header("Location:admin_main.php");
+               return;
+             }
+             else
+             {
+               header("Location:sell_main.php");
+               return;
+             }
 
+        }
+     }
 
 ?>
 <!DOCTYPE html>

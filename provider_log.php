@@ -1,11 +1,10 @@
 <?php
-
  session_start();
 
  if(!isset($_SESSION['college_seller']))
  {
  	$_SESSION['error'] = "ONLY SELLERS ARE GRANTED PERMISSION TO ACESS THEIR LOG";
- 	header("Location:main.php");
+ 	header("Location:index.php");
  	return;
  }
  
@@ -111,7 +110,7 @@
      }
 
      $_SESSION['success'] = "Changes saved";
-        header("Location:main.php");
+        header("Location:sell_main.php");
         return;
   }
 ?>

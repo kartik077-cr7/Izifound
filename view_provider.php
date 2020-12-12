@@ -1,5 +1,4 @@
 <?php
-   
    session_start();
     
     if(!isset($_SESSION['email']))
@@ -17,10 +16,8 @@
 	 $qry = 'SELECT * FROM provider'; 
 	 $result = mysqli_query($link,$qry);
     echo '<h1 style="text-align:center;">The Provider Details are - </h1>';
-
-    
-
-    echo  '<table class="styled-table" style="margin-left:auto;margin-right:auto">
+          
+    echo  '<table class="styled-table" style="margin-left:auto;margin-right:auto;">
 	<th> Name </th> 
 	 <th> College </th> 
 	 <th> Rating</th>

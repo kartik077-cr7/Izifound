@@ -46,9 +46,6 @@ li {
     list-style: none;
 }
  
- 
-/*------------------------ 2 Home ------------------------*/
-
 .main {
     background: url(Images/sell.jpg) no-repeat;
     background-size: cover;
@@ -223,7 +220,6 @@ li {
     display: none;
 }
 
- 
 @keyframes cd-sequence {
     0% {
         transform: translateY(-50%) translateX(-2%);
@@ -380,11 +376,11 @@ header {
 		<ul class="page-menu">
 			<li><a href="view_provider.php">View All Provider</a></li>
 			<li><a href="view_products.php">View All Products</a></li>
+            <li><a href="edit_log_provider.php">Maintain Product</a></li>
 			<li><a href="provider_log.php">Update Your Log</a></li>
-			<li><a href="update_product.php"></a></li>
-			<li><a href="pending_request.php"></a></li>
 			<li><a href="sell_history.php">Sell History</a></li>
 			<li><a href="history.php">Buy History</a></li>
+            <li><a href="feedback.php">Feedback</a></li>
 			<li><a href="logout.php">Logout</a></li>
 			<li class="social">
 				<a href="#"><img src="icons/social/twitter.svg" alt=""></a>
@@ -398,7 +394,7 @@ header {
 </div>
 <div class="cd-transition-layer visible opening"> 
 	<div class="bg-layer"></div>
-</div><!-- Ink Transition -->
+</div>
 
 <div class="wrapper">
  

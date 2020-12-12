@@ -1,4 +1,5 @@
 <?php
+require "navbar.php";
       session_start();
       //include('class.phpmailer.php');
 
