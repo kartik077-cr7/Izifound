@@ -4,7 +4,7 @@ session_start();
 if(!isset($_GET['Id']))
 {
 	$_SESSION['Id'] = "Acess denied";
-	header("Location:main.php");
+	header("Location:index.php");
 	return;
 }
 

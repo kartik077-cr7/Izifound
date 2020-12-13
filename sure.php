@@ -6,7 +6,7 @@
  if(!isset($_GET['Email']))
   {
   	$_SESSION['error'] = "Get parameter not set";
-  	header("Location:main.php");
+  	header("Location:index.php");
   	return;
   }
 

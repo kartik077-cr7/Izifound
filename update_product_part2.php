@@ -3,19 +3,23 @@ session_start();
 if(!isset($_SESSION['admin_college']))
 {
 	$_SESSION['error'] = "Not authorised to Update";
-	header("Location:main.php");
+	header("Location:index.php");
 	return;
 }
 
 if(isset($_POST['submit']))
 {
-
+         if($_POST['submit'] == "Cancel")
+        {
+              header("Location:admin_main.php");
+              return;
+        }
 	     if($_POST['submit'] == 'Insert')
 	     {
              $id = $_POST['Product_id'];
              $name = $_POST['Product_name'];
 
-             if(strlen($name)<1)
+             if(strlen($name)<1 || strlen($id)<1)
              {
 		    	$_SESSION['error'] = "ALL Feilds are required for Insertion";
 		    	header('Location:update_product.php');

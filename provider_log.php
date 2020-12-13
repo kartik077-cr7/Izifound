@@ -108,7 +108,7 @@
              }
          }
      }
-
+                                            
      $_SESSION['success'] = "Changes saved";
         header("Location:sell_main.php");
         return;
@@ -136,18 +136,27 @@
 	<style type="text/css">
 	#position_fields
 {
-	background-color: pink;
+   opacity: 0.7;
+	 background-color: white;
     margin-left: 35%;
     margin-right: 30%;
 }
-
 body
 {
 	font-size: 2em;
 }
 </style>
 </head>
-<body>
+<body style="background-image: url('Images/green.jpg');
+image-rendering: pixelated;
+ image-rendering: -webkit-optimize-contrast;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ color: black;">
 	<?php 
 
         if(isset($_SESSION['error']))

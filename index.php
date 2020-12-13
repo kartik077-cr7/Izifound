@@ -99,7 +99,7 @@ image-rendering: pixelated;
     </div>
  <hr>
   <div class="second">
-    <h2 align="center" style="display: block;">CREATOR</h2>
+    <h2 align="center" style="display: block;">CREATORS</h2>
          <ul class="photo-grid">
       <li>
 
@@ -119,7 +119,7 @@ image-rendering: pixelated;
       </li>
       <li>
           <figure>
-            <img src="Images/Adarsh.jpeg" height="180" width="320" alt="Adarsh">
+            <img src="Images/Adarsh-2.jpeg" height="180" width="320" alt="Adarsh">
             <figcaption><p>ADARSH</p></figcaption>
           </figure>
       </li>

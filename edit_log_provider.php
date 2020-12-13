@@ -94,9 +94,6 @@
     $email = $_SESSION['email'];                             
     $qry = "SELECT * FROM intermediate where email = '$email'"; 
      $result = mysqli_query($link,$qry);
-                            
-                                                                
-     echo '<h1 style="text-align:center;"> Details are - </h1>';
                            
      $positions = array();                    
      while($row = mysqli_fetch_assoc($result))
@@ -140,7 +137,35 @@
     background: white;
     border-radius: 0px;
 }
+#position_fields
+{
+  opacity: 0.8;
+  background-color: white;
+    margin-left: 35%;
+    margin-right: 30%;
+}
 
+#product
+{
+  margin-left: 45%;
+}
+body
+{
+  font-size: 2em;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("Images/green-2.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
  </style>
 </head>
@@ -152,10 +177,12 @@
         	unset($_SESSION['message']);
           }
 ?> 
+  <div class="bg">
     <form method="post" enctype="multipart/form-data">
     	<?php
+         echo '<h1 style="text-align:center;"> Details are - </h1>';
     	$pos = 0;
-   echo('<p id = "Product">Products: <input type="submit" id = "addPos" value="+"><br>');
+   echo('<p id = "Product" style="margin-left:46%">Products: <input type="submit" id = "addPos" value="+"><br>');
    echo('<div id="position_fields"><br>');
 
 
@@ -225,9 +252,10 @@
 		    <input type="submit" name="cancel" value="Cancel">
     </form>
     <?php
-    echo("<p align ='center' style = 'color:black;'> PRODUCT NOT REGISTERED DON'T WORRY </p>");
-    echo("<p align='center' style='color:red;'>" ."<a href = 'product_request.php'>Click to register</a>". "</p>")
+    echo("<p align ='center' style = 'color:black; background-color:white; opacity:0.7;margin-left:35%;margin-right:35%;'> PRODUCT NOT REGISTERED DON'T WORRY </p>");
+    echo("<p align='center' style='color:red;'>" ."<a href = 'product_request.php' style='color:black; background-color:white;'>Click to register</a>". "</p>")
     ?>
+    </div>
 </body>
 </html>
 

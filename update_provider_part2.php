@@ -4,13 +4,17 @@
 	if(!isset($_SESSION['admin_college']))
 	{
 		$_SESSION['error'] = "Not authorised to Update";
-		header("Location:main.php");
+		header("Location:index.php");
 		return;
 	}
 
 if(isset($_POST['submit']))
 {
-
+          if($_POST['submit'] == "Cancel")
+        {
+              header("Location:admin_main.php");
+              return;
+        }
 		if($_POST['submit'] == "Insert")
 		{
 			$email = $_POST['Email'];
@@ -20,7 +24,7 @@ if(isset($_POST['submit']))
 		    $password = $_POST['Password'];
             $college = $_SESSION['admin_college'];
 
-		    if(strlen($_POST['Name'])<1 || strlen($_POST['Username'])<1 || strlen($_POST['Password'])<1 )
+		    if(strlen($_POST['Name'])<1 || strlen($_POST['Username'])<1 || strlen($_POST['Password'])<1 || strlen($_POST['Email'])<1)
 		    {
 		    	$_SESSION['error'] = "ALL Feilds are required except rating for Insertion";
 		    	header('Location:update_provider.php');

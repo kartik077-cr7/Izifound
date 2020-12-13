@@ -3,12 +3,32 @@ session_start();
 if(!isset($_SESSION['admin_college']))
 {
 	$_SESSION['error'] = "Not authorised to Update";
-	header("Location:main.php");
+	header("Location:index.php");
 	return;
 }
 ?>
 <html>  
-<body>  
+<head>
+  <style type="text/css">
+    form
+    {
+      background-color: white;
+      opacity: 0.8;
+      margin-left: 35%;
+      margin-right: 35%;
+    }
+  </style>
+</head>
+<body style="background-image: url('Images/green-2.jpg');
+image-rendering: pixelated;
+ image-rendering: -webkit-optimize-contrast;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ color: black;"> 
 <center>                              
 <?php
      if (isset($_SESSION['success'])) 
@@ -28,7 +48,7 @@ if(!isset($_SESSION['admin_college']))
 <table cellpadding = "10">  
 <tr>                    
 <td>Provider Email*</td>                                          
-<td><input type="email" name="Email" maxlength="25" required="required"></td> 
+<td><input type="email" name="Email" maxlength="25"></td> 
 </tr> 
 <tr>  
 <td>Name</td> 
@@ -41,7 +61,7 @@ if(!isset($_SESSION['admin_college']))
 <td><input type="password" name="Password" maxlength="10"></td> 
 </tr> 
 <td><input type="submit" name="submit" value="Insert"></td> 
-<td></td>
+<td><input type="submit" name="submit" value="Cancel"></td>
 <td><input type="submit" name="submit" value="Delete"></td> 
 </tr> 
 </table> 

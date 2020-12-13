@@ -78,9 +78,11 @@ session_start();
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
   <style type="text/css">
+    
   #position_fields
 {
-	background-color: pink;
+	 background-color: white;
+   opacity: 0.7;
     margin-left: 35%;
     margin-right: 30%;
 }
@@ -91,7 +93,16 @@ body
 }
 </style>
 </head>
-<body>
+<body style="background-image: url('Images/green.jpg');
+image-rendering: pixelated;
+ image-rendering: -webkit-optimize-contrast;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ color: black;">
 	<?php
      
       	  if(count($positions) == 0)
