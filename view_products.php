@@ -34,6 +34,12 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="CSS/table_style.css">
+	<style type="text/css">
+		a
+		{
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body>
 

@@ -88,6 +88,10 @@ if(!isset($_GET['product_id']))
 	  -webkit-transform: scale(2.5); 
 	  transform: scale(2.5); 
       }
+      a
+      {
+      	text-decoration: none;
+      }
 	</style>
 </head>
 <body>

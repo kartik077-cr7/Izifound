@@ -149,7 +149,7 @@
 	#position_fields
 {
   opacity: 0.7;
-	 background-color: lightgreen;
+	 background-color: white;
     margin-left: 35%;
     margin-right: 30%;
 }

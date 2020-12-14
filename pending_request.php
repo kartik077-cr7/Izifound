@@ -81,7 +81,8 @@ session_start();
   <style type="text/css">
   #position_fields
 {
-	 background-color: lightgreen;
+	 background-color: white;
+   opacity: 0.7;
     margin-left: 35%;
     margin-right: 30%;
 }

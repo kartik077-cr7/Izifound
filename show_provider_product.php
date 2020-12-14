@@ -78,6 +78,10 @@ if(!isset($_GET['Email']))
 	  -webkit-transform: scale(2.5); 
 	  transform: scale(2.5); 
       }
+      a
+      {
+      	text-decoration: none;
+      }
 	</style>
 </head>
 <body>
